@@ -1,1 +1,7 @@
-console.log("hellow world");
+const http = require('http')
+const server = http.createServer((req,res)=>{
+   console.log('harsh');
+});
+server.listen(4000);
+
+
