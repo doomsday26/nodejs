@@ -18,26 +18,20 @@ req.on('data',(chunk)=>{console.log(chunk);
 body.push(chunk);
 console.log("hello1");
 });
-req.on('end',()=>{
+return req.on('end',()=>{
     const parsebody= Buffer.concat(body).toString();
     const msg= parsebody.split('=')[1];
-    fs.writeFileSync('response.txt',msg)
+    fs.writeFile('response.txt',msg, (err)=>{
+        res.statusCode=302
+      res.setHeader('Location','/')
+        return res.end();
+    } )
 })
-
-
-res.statusCode=302
-res.setHeader('Location','/')
-return res.end();
-
 }
-
-
 res.setHeader('Content-Type','text/html');
 res.write('<html>');
 res.write('<head><title>My first page</title></head>')
 res.write(  "<body><h1>hello to project server</h1>  </body>"  )
-
-
 res.write('</html>')
 res.end();
 });
