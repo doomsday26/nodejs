@@ -26,7 +26,7 @@ const requesthandler=(req,res)=>{
     });
     return req.on('end',()=>{
         const parsebody= Buffer.concat(body).toString();
-        const msg= parsebody.split('=')[1];
+        const msg= parsebody.split('=')[0];
         fs.writeFile('response.txt',msg, (err)=>{
             res.statusCode=302
           res.setHeader('Location','/')
