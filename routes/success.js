@@ -1,12 +1,9 @@
 const express = require('express');
 const app = express();
 const router=express.Router();
+const successrouter = require('../controllers/success')
 
 
-
-router.post('/',(req,res)=>{
-    console.log(req.body);
-    res.send(`${req.body.name} your data has been submitted successfully with email id of ${req.body.email} `   )
-}  )
+router.post('/',successrouter.success )
 
 module.exports= router;

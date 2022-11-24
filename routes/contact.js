@@ -3,11 +3,9 @@ const path = require('path');
 const app= express();
 const router= express.Router();
 const rootDir = require('../util/path')
+const contactcontroller= require('../controllers/admin')
 
 
-
-router.get('/',(req,res)=>{
-    res.sendFile(path.join(rootDir,'views','contact.html') )
-}  )
+router.get('/',contactcontroller.contactget )
 
 module.exports= router;
